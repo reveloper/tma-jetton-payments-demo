@@ -37,6 +37,8 @@ const Cart = () => {
       const jettonMaster = tonClient.open(JettonMaster.create(USDT_MASTER_ADDRESS));
       const usersUsdtAddress = await jettonMaster.getWalletAddress(walletAddress);
 
+      // creating and opening jetton wallet instance.
+      // First argument (provider) will be automatically substituted in methods, which names starts with 'get' or 'send'
       const jettonWallet = tonClient.open(JettonWallet.createFromAddress(usersUsdtAddress));
 
       await jettonWallet.sendTransfer(sender, {
